@@ -331,7 +331,6 @@ func (gw *groupWatcher) getScrapeWorkObjectsByAPIWatcherLocked(objectsByKey map[
 				e.swosByKey[key] = swos
 				e.mu.Unlock()
 			}
-			putLabelssToPool(labelss)
 			wg.Done()
 			<-limiterCh
 		}(key, labelss)
