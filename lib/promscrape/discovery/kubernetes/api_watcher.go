@@ -324,7 +324,7 @@ func (gw *groupWatcher) getScrapeWorkObjectsByAPIWatcherLocked(objectsByKey map[
 		labelss := o.getTargetLabels(gw)
 		wg.Add(1)
 		limiterCh <- struct{}{}
-		go func(key string, labelss []*promutils.Labels) {
+		go func(key string, labelss []map[string]string) {
 			for aw, e := range swosByAPIWatcher {
 				swos := getScrapeWorkObjectsForLabels(aw.swcFunc, labelss)
 				e.mu.Lock()
